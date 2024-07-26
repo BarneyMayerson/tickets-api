@@ -11,8 +11,8 @@ Route::middleware("auth:sanctum")->post("/logout", [
     "logout",
 ]);
 
-Route::prefix("v1")->group(base_path("routes/api_v1.php"));
-Route::prefix("v2")->group(base_path("routes/api_v2.php"));
+Route::prefix("v1")->as("v1.")->group(base_path("routes/api_v1.php"));
+Route::prefix("v2")->as("v2.")->group(base_path("routes/api_v2.php"));
 
 Route::get("/user", function (Request $request) {
     return $request->user();
