@@ -1,3 +1,13 @@
 {
-  "plugins": ["@prettier/plugin-php"]
+  "plugins": ["@prettier/plugin-php"],
+  "phpVersion": "8.2",
+  "overrides": [
+    {
+      "files": "*.php",
+      "options": {
+        "singleQuote": false,
+        "printWidth": 100
+      }
+    }
+  ]
 }
