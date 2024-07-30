@@ -4,6 +4,8 @@ namespace App\Http\Filters\V1;
 
 class AuthorFilter extends QueryFilter
 {
+    protected array $sortable = ["id", "email", "name", "created_at", "updated_at"];
+
     public function include($value)
     {
         return $this->builder->with($value);

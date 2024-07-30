@@ -4,6 +4,8 @@ namespace App\Http\Filters\V1;
 
 class TicketFilter extends QueryFilter
 {
+    protected array $sortable = ["id", "title", "status", "created_at", "updated_at"];
+
     public function include($value)
     {
         return $this->builder->with($value);
