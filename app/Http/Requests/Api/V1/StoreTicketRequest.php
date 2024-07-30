@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Api\V1;
 
+use App\Models\Status;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreTicketRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreTicketRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +22,24 @@ class StoreTicketRequest extends FormRequest
      */
     public function rules(): array
     {
+        $rules = [
+            "data.attributes.title" => "required|string",
+            "data.attributes.description" => "required|string",
+            "data.attributes.status" => "required|string|in:" . Status::valuesToString(),
+        ];
+
+        if ($this->routeIs("tickets.store")) {
+            $rules["data.relationships.author.data.id"] = "required|integer";
+        }
+
+        return $rules;
+    }
+
+    public function messages(): array
+    {
         return [
-                //
-            ];
+            "data.attributes.status" =>
+                "The data.attributes.status is invalid. Please use " . Status::valuesToString(),
+        ];
     }
 }

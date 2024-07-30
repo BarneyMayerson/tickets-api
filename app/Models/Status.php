@@ -15,4 +15,9 @@ enum Status: string
     {
         return Arr::pluck(self::cases(), "value");
     }
+
+    public static function valuesToString(string $separator = ","): string
+    {
+        return implode($separator, self::allValues());
+    }
 }
