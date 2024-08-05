@@ -68,7 +68,7 @@ class TicketController extends ApiController
         try {
             $ticket = Ticket::query()->findOrFail($ticket_id);
 
-            $this->isAble("update", $ticket);
+            $this->authorize("update", $ticket);
 
             $ticket->update($request->mappedAttributes());
 

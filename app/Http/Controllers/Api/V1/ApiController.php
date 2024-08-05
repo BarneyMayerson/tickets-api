@@ -32,11 +32,4 @@ class ApiController extends Controller
 
         return in_array(strtolower($relationship), $includeValues);
     }
-
-    public function isAble($ability, $targetModel): Response
-    {
-        Gate::policy($targetModel::class, $this->policyClass);
-
-        return $this->authorize($ability, [$targetModel]);
-    }
 }
