@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginUserRequest;
 use App\Models\User;
+use App\Permissions\V1\Abilities;
 use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -17,10 +18,7 @@ class AuthController extends Controller
     public function login(LoginUserRequest $request)
     {
         if (!Auth::attempt($request->only(["email", "password"]))) {
-            return $this->error(
-                "Invalid credentials",
-                Response::HTTP_UNAUTHORIZED
-            );
+            return $this->error("Invalid credentials", Response::HTTP_UNAUTHORIZED);
         }
 
         $user = User::firstWhere("email", $request->email);
@@ -28,8 +26,8 @@ class AuthController extends Controller
         return $this->ok("Authenticated", [
             "token" => $user->createToken(
                 "API token for " . $user->email,
-                ["*"],
-                now()->addMonth()
+                Abilities::getAbilities($user),
+                now()->addMonth(),
             )->plainTextToken,
         ]);
     }
