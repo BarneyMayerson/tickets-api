@@ -1,0 +1,72 @@
+<?php
+
+namespace App\Exceptions\Api\V1;
+
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+class ApiExceptions
+{
+    public static array $handlers = [
+        AuthenticationException::class => "handleAuthenticationException",
+        ValidationException::class => "handleValidationException",
+        ModelNotFoundException::class => "handleNotFoundException",
+        NotFoundHttpException::class => "handleNotFoundException",
+    ];
+
+    public static function handleAuthenticationException(
+        AuthenticationException $e,
+        Request $request,
+    ): JsonResponse {
+        // log that sensitive stuff
+        // should move this out to custom logger
+        $source = "Line: " . $e->getLine() . ", File: " . $e->getFile();
+        Log::notice(basename(get_class($e)) . " - " . $e->getMessage() . " - " . $source);
+
+        return response()->json([
+            "error" => [
+                "type" => join("", array_slice(explode("\\", get_class($e)), -1)),
+                "status" => Response::HTTP_FORBIDDEN,
+                "message" => $e->getMessage(),
+            ],
+        ]);
+    }
+
+    public static function handleValidationException(
+        ValidationException $e,
+        Request $request,
+    ): JsonResponse {
+        foreach ($e->errors() as $key => $value) {
+            foreach ($value as $message) {
+                $errors[] = [
+                    "type" => join("", array_slice(explode("\\", get_class($e)), -1)),
+                    "status" => Response::HTTP_UNPROCESSABLE_ENTITY,
+                    "message" => $message,
+                ];
+            }
+        }
+
+        return response()->json([
+            "errors" => $errors,
+        ]);
+    }
+
+    public static function handleNotFoundException(
+        ModelNotFoundException|NotFoundHttpException $e,
+        Request $request,
+    ): JsonResponse {
+        return response()->json([
+            "error" => [
+                "type" => join("", array_slice(explode("\\", get_class($e)), -1)),
+                "status" => Response::HTTP_NOT_FOUND,
+                "message" => "Not Found " . $request->getRequestUri(),
+            ],
+        ]);
+    }
+}

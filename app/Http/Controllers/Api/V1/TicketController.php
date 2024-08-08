@@ -43,87 +43,48 @@ class TicketController extends ApiController
     /**
      * Display the specified resource.
      */
-    public function show($ticket_id)
+    public function show(Ticket $ticket)
     {
-        try {
-            $ticket = Ticket::query()->findOrFail($ticket_id);
-
-            if ($this->include("author")) {
-                return new TicketResource($ticket->load("author"));
-            }
-
-            return new TicketResource($ticket);
-        } catch (ModelNotFoundException $exception) {
-            return $this->error("Ticket cannot be found", Response::HTTP_NOT_FOUND);
+        if ($this->include("author")) {
+            return new TicketResource($ticket->load("author"));
         }
+
+        return new TicketResource($ticket);
     }
 
     /**
      * Update the specified resource in storage. (PATCH request method)
      */
-    public function update(UpdateTicketRequest $request, $ticket_id)
+    public function update(UpdateTicketRequest $request, Ticket $ticket)
     {
-        try {
-            $ticket = Ticket::query()->findOrFail($ticket_id);
+        if ($this->authorize("update", $ticket)) {
+            $ticket->update($request->mappedAttributes());
 
-            if ($this->authorize("update", $ticket)) {
-                $ticket->update($request->mappedAttributes());
-
-                return new TicketResource($ticket);
-            }
-
-            return $this->error(
-                "You are not authorized to update that resource",
-                Response::HTTP_FORBIDDEN,
-            );
-        } catch (ModelNotFoundException $exception) {
-            return $this->error("Ticket cannot be found", Response::HTTP_NOT_FOUND);
+            return new TicketResource($ticket);
         }
     }
 
     /**
      * Replace the specified resource in storage. (PUT request method)
      */
-    public function replace(ReplaceTicketRequest $request, $ticket_id)
+    public function replace(ReplaceTicketRequest $request, Ticket $ticket)
     {
-        try {
-            $ticket = Ticket::query()->findOrFail($ticket_id);
+        if ($this->authorize("replace", $ticket)) {
+            $ticket->update($request->mappedAttributes());
 
-            if ($this->authorize("replace", $ticket)) {
-                $ticket->update($request->mappedAttributes());
-
-                return new TicketResource($ticket);
-            }
-
-            return $this->error(
-                "You are not authorized to replace that resource",
-                Response::HTTP_FORBIDDEN,
-            );
-        } catch (ModelNotFoundException $exception) {
-            return $this->error("Ticket cannot be found", Response::HTTP_NOT_FOUND);
+            return new TicketResource($ticket);
         }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($ticket_id)
+    public function destroy(Ticket $ticket)
     {
-        try {
-            $ticket = Ticket::query()->findOrFail($ticket_id);
+        if ($this->authorize("delete", $ticket)) {
+            $ticket->delete();
 
-            if ($this->authorize("delete", $ticket)) {
-                $ticket->delete();
-
-                return $this->ok("Ticket successfully deleted.");
-            }
-
-            return $this->error(
-                "You are not authorized to delete that resource",
-                Response::HTTP_FORBIDDEN,
-            );
-        } catch (ModelNotFoundException $exception) {
-            return $this->error("Ticket is not found", Response::HTTP_NOT_FOUND);
+            return $this->ok("Ticket successfully deleted.");
         }
     }
 }
