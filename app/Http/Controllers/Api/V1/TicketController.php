@@ -30,16 +30,14 @@ class TicketController extends ApiController
      */
     public function store(StoreTicketRequest $request)
     {
-        try {
-            $this->authorize("store", Ticket::class);
-
+        if ($this->authorize("store", Ticket::class)) {
             return new TicketResource(Ticket::create($request->mappedAttributes()));
-        } catch (AuthorizationException $e) {
-            return $this->error(
-                "You are not authorized to create that resource",
-                Response::HTTP_FORBIDDEN,
-            );
         }
+
+        return $this->error(
+            "You are not authorized to create that resource",
+            Response::HTTP_FORBIDDEN,
+        );
     }
 
     /**
@@ -68,18 +66,18 @@ class TicketController extends ApiController
         try {
             $ticket = Ticket::query()->findOrFail($ticket_id);
 
-            $this->authorize("update", $ticket);
+            if ($this->authorize("update", $ticket)) {
+                $ticket->update($request->mappedAttributes());
 
-            $ticket->update($request->mappedAttributes());
+                return new TicketResource($ticket);
+            }
 
-            return new TicketResource($ticket);
-        } catch (ModelNotFoundException $exception) {
-            return $this->error("Ticket cannot be found", Response::HTTP_NOT_FOUND);
-        } catch (AuthorizationException $e) {
             return $this->error(
                 "You are not authorized to update that resource",
                 Response::HTTP_FORBIDDEN,
             );
+        } catch (ModelNotFoundException $exception) {
+            return $this->error("Ticket cannot be found", Response::HTTP_NOT_FOUND);
         }
     }
 
@@ -91,11 +89,16 @@ class TicketController extends ApiController
         try {
             $ticket = Ticket::query()->findOrFail($ticket_id);
 
-            $this->authorize("replace", $ticket);
+            if ($this->authorize("replace", $ticket)) {
+                $ticket->update($request->mappedAttributes());
 
-            $ticket->update($request->mappedAttributes());
+                return new TicketResource($ticket);
+            }
 
-            return new TicketResource($ticket);
+            return $this->error(
+                "You are not authorized to replace that resource",
+                Response::HTTP_FORBIDDEN,
+            );
         } catch (ModelNotFoundException $exception) {
             return $this->error("Ticket cannot be found", Response::HTTP_NOT_FOUND);
         }
@@ -109,11 +112,16 @@ class TicketController extends ApiController
         try {
             $ticket = Ticket::query()->findOrFail($ticket_id);
 
-            $this->authorize("delete", $ticket);
+            if ($this->authorize("delete", $ticket)) {
+                $ticket->delete();
 
-            $ticket->delete();
+                return $this->ok("Ticket successfully deleted.");
+            }
 
-            return $this->ok("Ticket successfully deleted.");
+            return $this->error(
+                "You are not authorized to delete that resource",
+                Response::HTTP_FORBIDDEN,
+            );
         } catch (ModelNotFoundException $exception) {
             return $this->error("Ticket is not found", Response::HTTP_NOT_FOUND);
         }
