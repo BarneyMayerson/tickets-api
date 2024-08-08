@@ -40,8 +40,6 @@ class TicketController extends ApiController
                 Response::HTTP_FORBIDDEN,
             );
         }
-
-        return new TicketResource(Ticket::create($request->mappedAttributes()));
     }
 
     /**
@@ -117,7 +115,7 @@ class TicketController extends ApiController
 
             return $this->ok("Ticket successfully deleted.");
         } catch (ModelNotFoundException $exception) {
-            return $this->error("Ticket cannot found", Response::HTTP_NOT_FOUND);
+            return $this->error("Ticket is not found", Response::HTTP_NOT_FOUND);
         }
     }
 }
