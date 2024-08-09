@@ -4,6 +4,7 @@ namespace App\Http\Requests\Api\V1;
 
 use App\Models\Status;
 use App\Permissions\V1\Abilities;
+use Illuminate\Support\Facades\Auth;
 
 class StoreTicketRequest extends BaseTicketRequest
 {
@@ -26,10 +27,12 @@ class StoreTicketRequest extends BaseTicketRequest
             ? "data.relationships.author.data.id"
             : "author";
 
-        $user = $this->user();
+        $user = Auth::user();
         $authorRule = "required|integer|exists:users,id";
 
         $rules = [
+            "data" => "required|array",
+            "data.attributes" => "required|array",
             "data.attributes.title" => "required|string",
             "data.attributes.description" => "required|string",
             "data.attributes.status" => "required|string|in:" . Status::valuesToString(),

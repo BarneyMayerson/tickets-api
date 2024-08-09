@@ -1,0 +1,1161 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "Tickets Please API Dcumentation",
+        "_postman_id": "df45e3b0-7c9a-4c06-b167-93072844a8d6",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "description": "",
+            "item": [
+                {
+                    "name": "Login",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"greta83@example.org\",\"password\":\"L~-.D]l15xGKQAK}^\"}"
+                        },
+                        "description": "Authenticates the user and returns the user's API token.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"data\": {\n\"token\": \"{YOUR_AUTH_KEY}\"\n},\n\"message\": \"Authenticated\",\n\"status\": 200\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Signs out the user and destroys the API token."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "POST api\/register",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/authors",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/authors"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"type\":\"user\",\"id\":1,\"attributes\":{\"name\":\"Elmer Terry\",\"email\":\"test@example.com\",\"isManager\":false,\"emailVerifiedAt\":\"2024-08-08T07:07:45.000000Z\",\"createdAt\":\"2024-08-08T07:07:45.000000Z\",\"updatedAt\":\"2024-08-08T07:07:45.000000Z\"},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/1\"}},{\"type\":\"user\",\"id\":3,\"attributes\":{\"name\":\"Mr. Elian Kerluke\",\"email\":\"kuvalis.gracie@example.com\",\"isManager\":false,\"emailVerifiedAt\":\"2024-08-08T07:07:45.000000Z\",\"createdAt\":\"2024-08-08T07:07:45.000000Z\",\"updatedAt\":\"2024-08-08T07:07:45.000000Z\"},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/3\"}},{\"type\":\"user\",\"id\":4,\"attributes\":{\"name\":\"Mr. Llewellyn Hagenes\",\"email\":\"pablo.bahringer@example.net\",\"isManager\":false,\"emailVerifiedAt\":\"2024-08-08T07:07:45.000000Z\",\"createdAt\":\"2024-08-08T07:07:45.000000Z\",\"updatedAt\":\"2024-08-08T07:07:45.000000Z\"},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/4\"}},{\"type\":\"user\",\"id\":5,\"attributes\":{\"name\":\"Jailyn Cassin DDS\",\"email\":\"houston43@example.com\",\"isManager\":false,\"emailVerifiedAt\":\"2024-08-08T07:07:45.000000Z\",\"createdAt\":\"2024-08-08T07:07:45.000000Z\",\"updatedAt\":\"2024-08-08T07:07:45.000000Z\"},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/5\"}},{\"type\":\"user\",\"id\":6,\"attributes\":{\"name\":\"Kavon Boehm\",\"email\":\"lbartell@example.com\",\"isManager\":false,\"emailVerifiedAt\":\"2024-08-08T07:07:45.000000Z\",\"createdAt\":\"2024-08-08T07:07:45.000000Z\",\"updatedAt\":\"2024-08-08T07:07:45.000000Z\"},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/6\"}},{\"type\":\"user\",\"id\":7,\"attributes\":{\"name\":\"Mr. Rupert McDermott\",\"email\":\"jprice@example.com\",\"isManager\":false,\"emailVerifiedAt\":\"2024-08-08T07:07:45.000000Z\",\"createdAt\":\"2024-08-08T07:07:45.000000Z\",\"updatedAt\":\"2024-08-08T07:07:45.000000Z\"},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/7\"}},{\"type\":\"user\",\"id\":8,\"attributes\":{\"name\":\"Yasmeen Schowalter\",\"email\":\"qrunolfsdottir@example.com\",\"isManager\":false,\"emailVerifiedAt\":\"2024-08-08T07:07:45.000000Z\",\"createdAt\":\"2024-08-08T07:07:45.000000Z\",\"updatedAt\":\"2024-08-08T07:07:45.000000Z\"},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/8\"}},{\"type\":\"user\",\"id\":9,\"attributes\":{\"name\":\"Etha Cummerata\",\"email\":\"freddy.heathcote@example.net\",\"isManager\":false,\"emailVerifiedAt\":\"2024-08-08T07:07:45.000000Z\",\"createdAt\":\"2024-08-08T07:07:45.000000Z\",\"updatedAt\":\"2024-08-08T07:07:45.000000Z\"},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/9\"}},{\"type\":\"user\",\"id\":10,\"attributes\":{\"name\":\"Evie Prohaska\",\"email\":\"greinger@example.net\",\"isManager\":false,\"emailVerifiedAt\":\"2024-08-08T07:07:45.000000Z\",\"createdAt\":\"2024-08-08T07:07:45.000000Z\",\"updatedAt\":\"2024-08-08T07:07:45.000000Z\"},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/10\"}}],\"links\":{\"first\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors?page=1\",\"last\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors?page=1\",\"prev\":null,\"next\":null},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors?page=1\",\"label\":\"1\",\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"active\":false}],\"path\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\",\"per_page\":15,\"to\":9,\"total\":9}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/authors\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/authors\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the author."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"user\",\"id\":1,\"attributes\":{\"name\":\"Elmer Terry\",\"email\":\"test@example.com\",\"isManager\":false,\"emailVerifiedAt\":\"2024-08-08T07:07:45.000000Z\",\"createdAt\":\"2024-08-08T07:07:45.000000Z\",\"updatedAt\":\"2024-08-08T07:07:45.000000Z\"},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/1\"}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/authors\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/authors\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the author."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/v1\/authors\/{author_id}\/tickets",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/authors\/:author_id\/tickets",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/authors\/:author_id\/tickets",
+                            "variable": [
+                                {
+                                    "id": "author_id",
+                                    "key": "author_id",
+                                    "value": "ipsa",
+                                    "description": "The ID of the author."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[],\"links\":{\"first\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/ipsa\\\/tickets?page=1\",\"last\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/ipsa\\\/tickets?page=1\",\"prev\":null,\"next\":null},\"meta\":{\"current_page\":1,\"from\":null,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/ipsa\\\/tickets?page=1\",\"label\":\"1\",\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"active\":false}],\"path\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/ipsa\\\/tickets\",\"per_page\":15,\"to\":null,\"total\":0}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/v1\/authors\/{author_id}\/tickets",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/authors\/:author_id\/tickets",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/authors\/:author_id\/tickets",
+                            "variable": [
+                                {
+                                    "id": "author_id",
+                                    "key": "author_id",
+                                    "value": "culpa",
+                                    "description": "The ID of the author."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"title\":\"soluta\",\"description\":\"Nam magni consequatur doloremque maiores quas iste veniam.\",\"status\":\"H\"}},\"author\":\"1\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/v1\/authors\/{author_id}\/tickets\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/authors\/:author_id\/tickets\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/authors\/:author_id\/tickets\/:id",
+                            "variable": [
+                                {
+                                    "id": "author_id",
+                                    "key": "author_id",
+                                    "value": "officia",
+                                    "description": "The ID of the author."
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the ticket."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "PUT api\/v1\/authors\/{author}\/tickets\/{ticket}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/authors\/:author\/tickets\/:ticket",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/authors\/:author\/tickets\/:ticket",
+                            "variable": [
+                                {
+                                    "id": "author",
+                                    "key": "author",
+                                    "value": "amet",
+                                    "description": "The author."
+                                },
+                                {
+                                    "id": "ticket",
+                                    "key": "ticket",
+                                    "value": "1",
+                                    "description": "The ticket."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"title\":\"ut\",\"description\":\"Architecto repellendus repellat id laudantium.\",\"status\":\"A\"},\"relationships\":{\"author\":{\"data\":{\"id\":15}}}}}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "PATCH api\/v1\/authors\/{author}\/tickets\/{ticket}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/authors\/:author\/tickets\/:ticket",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/authors\/:author\/tickets\/:ticket",
+                            "variable": [
+                                {
+                                    "id": "author",
+                                    "key": "author",
+                                    "value": "nostrum",
+                                    "description": "The author."
+                                },
+                                {
+                                    "id": "ticket",
+                                    "key": "ticket",
+                                    "value": "1",
+                                    "description": "The ticket."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"title\":\"et\",\"description\":\"Eius modi laboriosam repudiandae accusantium eum.\",\"status\":\"A\"},\"relationships\":{\"author\":{\"data\":[]}}}}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"type\":\"user\",\"id\":1,\"attributes\":{\"name\":\"Elmer Terry\",\"email\":\"test@example.com\",\"isManager\":false},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/1\"}},{\"type\":\"user\",\"id\":3,\"attributes\":{\"name\":\"Mr. Elian Kerluke\",\"email\":\"kuvalis.gracie@example.com\",\"isManager\":false},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/3\"}},{\"type\":\"user\",\"id\":4,\"attributes\":{\"name\":\"Mr. Llewellyn Hagenes\",\"email\":\"pablo.bahringer@example.net\",\"isManager\":false},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/4\"}},{\"type\":\"user\",\"id\":5,\"attributes\":{\"name\":\"Jailyn Cassin DDS\",\"email\":\"houston43@example.com\",\"isManager\":false},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/5\"}},{\"type\":\"user\",\"id\":6,\"attributes\":{\"name\":\"Kavon Boehm\",\"email\":\"lbartell@example.com\",\"isManager\":false},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/6\"}},{\"type\":\"user\",\"id\":7,\"attributes\":{\"name\":\"Mr. Rupert McDermott\",\"email\":\"jprice@example.com\",\"isManager\":false},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/7\"}},{\"type\":\"user\",\"id\":8,\"attributes\":{\"name\":\"Yasmeen Schowalter\",\"email\":\"qrunolfsdottir@example.com\",\"isManager\":false},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/8\"}},{\"type\":\"user\",\"id\":9,\"attributes\":{\"name\":\"Etha Cummerata\",\"email\":\"freddy.heathcote@example.net\",\"isManager\":false},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/9\"}},{\"type\":\"user\",\"id\":10,\"attributes\":{\"name\":\"Evie Prohaska\",\"email\":\"greinger@example.net\",\"isManager\":false},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/10\"}}],\"links\":{\"first\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/users?page=1\",\"last\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/users?page=1\",\"prev\":null,\"next\":null},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/users?page=1\",\"label\":\"1\",\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"active\":false}],\"path\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/users\",\"per_page\":15,\"to\":9,\"total\":9}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"name\":\"quis\",\"email\":\"rsimonis@example.org\",\"password\":\"w7F\\\\\\\"b%b\\\"\\\/tu)k;Z:ts\",\"isManager\":true}}}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"user\",\"id\":1,\"attributes\":{\"name\":\"Elmer Terry\",\"email\":\"test@example.com\",\"isManager\":false},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/1\"}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Replace the specified resource in storage. (PUT request method)",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users\/:user",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users\/:user",
+                            "variable": [
+                                {
+                                    "id": "user",
+                                    "key": "user",
+                                    "value": "1",
+                                    "description": "The user."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"name\":\"molestias\",\"email\":\"tatyana18@example.com\",\"password\":\"\\\\zMIbVh;wM\",\"isManager\":true}}}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users\/:user",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users\/:user",
+                            "variable": [
+                                {
+                                    "id": "user",
+                                    "key": "user",
+                                    "value": "1",
+                                    "description": "The user."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"name\":\"vel\",\"email\":\"orn.adelia@example.com\",\"password\":\">;4b(FLEBXMDFmffVq\",\"isManager\":true}}}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v2\/tickets",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v2\/tickets"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "[{\"id\":100,\"user_id\":4,\"title\":\"labore\",\"description\":\"Accusamus pariatur non cum dicta. Et cupiditate qui occaecati amet rerum nam. Sint in qui qui non. Dolor qui nobis et voluptatibus consectetur et. Eligendi quo provident temporibus et mollitia occaecati.\",\"status\":\"H\",\"created_at\":\"2024-08-08T07:07:46.000000Z\",\"updated_at\":\"2024-08-08T07:07:46.000000Z\"},{\"id\":98,\"user_id\":1,\"title\":\"odit\",\"description\":\"Eos sint necessitatibus ullam corporis facere ut. Amet repudiandae voluptate quos illum mollitia reprehenderit neque. Necessitatibus et tempora qui. Illo reprehenderit ipsam consectetur ex et rerum.\",\"status\":\"A\",\"created_at\":\"2024-08-08T07:07:46.000000Z\",\"updated_at\":\"2024-08-08T07:07:46.000000Z\"},{\"id\":97,\"user_id\":6,\"title\":\"eos\",\"description\":\"Velit qui ut ratione vero architecto voluptatem. Perferendis aliquid pariatur sit dicta. Iusto eligendi sequi iure non velit. Adipisci modi suscipit mollitia eos nam omnis non.\",\"status\":\"X\",\"created_at\":\"2024-08-08T07:07:46.000000Z\",\"updated_at\":\"2024-08-08T07:07:46.000000Z\"}]",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v2\/tickets",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v2\/tickets"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v2\/tickets\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v2\/tickets\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the ticket."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "content-type",
+                                    "value": "text\/html; charset=UTF-8"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v2\/tickets\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v2\/tickets\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the ticket."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v2\/tickets\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v2\/tickets\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the ticket."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Managing Tickets",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get all tickets",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/tickets",
+                            "query": [
+                                {
+                                    "key": "sort",
+                                    "value": "sort%3Dtitle%2C-createdAt",
+                                    "description": "Data field(s) to sort by. Separate multiple fields with commas. Denote descending sort with a minus sign.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "filter%5Bstatus%5D",
+                                    "value": "",
+                                    "description": "Filter by status code: A, C, H, X.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "filter%5Btitle%5D",
+                                    "value": "%2Afix%2A",
+                                    "description": "Filter by title. Wildcards are supported.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/v1\/tickets?sort=sort%3Dtitle%2C-createdAt&filter%5Bstatus%5D=&filter%5Btitle%5D=%2Afix%2A"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"type\":\"ticket\",\"id\":63,\"attributes\":{\"title\":\"ipsa\",\"description\":\"Iste iste quisquam ut pariatur neque. Quia aut velit culpa sit earum consequatur eius. Sed reiciendis sapiente quia.\",\"status\":\"C\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":7},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/7\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/63\"}},{\"type\":\"ticket\",\"id\":76,\"attributes\":{\"title\":\"nemo\",\"description\":\"Laudantium at numquam sed quisquam deserunt. Expedita quaerat et aperiam est. Velit quas voluptatem eum hic nobis reprehenderit. Eaque ipsam incidunt illum quidem exercitationem vel aut.\",\"status\":\"C\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":8},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/8\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/76\"}},{\"type\":\"ticket\",\"id\":74,\"attributes\":{\"title\":\"est\",\"description\":\"Dicta cumque consequatur consequuntur ex est. Quia accusantium maxime autem inventore consectetur sint doloremque. Voluptas cum quia inventore facere perspiciatis.\",\"status\":\"A\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":8},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/8\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/74\"}},{\"type\":\"ticket\",\"id\":73,\"attributes\":{\"title\":\"vel\",\"description\":\"Vitae explicabo et quis asperiores. Vitae id eaque neque dicta exercitationem. Atque fugiat enim eligendi cum autem sint error.\",\"status\":\"C\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":8},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/8\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/73\"}},{\"type\":\"ticket\",\"id\":72,\"attributes\":{\"title\":\"non\",\"description\":\"Quam quos et ullam ea voluptates voluptas voluptas molestias. Occaecati nihil asperiores vel minus et cumque et. Non dolor tempora facere aliquid nihil quia dicta. Aut laudantium velit enim at sequi architecto praesentium.\",\"status\":\"H\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":4},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/4\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/72\"}},{\"type\":\"ticket\",\"id\":71,\"attributes\":{\"title\":\"totam\",\"description\":\"Aut aut ut explicabo quisquam aut est optio dolorum. Impedit dolor sit eum. Enim ut minima in facilis assumenda autem.\",\"status\":\"H\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":8},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/8\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/71\"}},{\"type\":\"ticket\",\"id\":70,\"attributes\":{\"title\":\"sit\",\"description\":\"Molestiae debitis est facere sed cupiditate asperiores distinctio. Voluptas ut maxime ut est. In atque odit fugiat omnis voluptate molestias rerum.\",\"status\":\"X\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":1},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/1\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/70\"}},{\"type\":\"ticket\",\"id\":68,\"attributes\":{\"title\":\"eaque\",\"description\":\"Dignissimos tempora non iste qui molestias natus. Autem reiciendis iusto ea. Non reprehenderit explicabo excepturi.\",\"status\":\"C\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":10},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/10\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/68\"}},{\"type\":\"ticket\",\"id\":67,\"attributes\":{\"title\":\"molestias\",\"description\":\"Et fugit quia voluptatum et voluptas. Exercitationem adipisci quisquam illo aut et. Et similique optio ullam et excepturi sit nemo. Inventore vero natus autem distinctio itaque.\",\"status\":\"H\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":9},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/9\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/67\"}},{\"type\":\"ticket\",\"id\":65,\"attributes\":{\"title\":\"aliquam\",\"description\":\"Illum eos molestiae soluta neque est et deleniti. Occaecati placeat beatae minus dolorem voluptas quam ut dolorem. Deleniti et minus facere odit tempora ut. Saepe alias corporis nihil.\",\"status\":\"C\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":7},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/7\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/65\"}},{\"type\":\"ticket\",\"id\":64,\"attributes\":{\"title\":\"est\",\"description\":\"Sapiente odit nihil molestiae quos sint eos. Facere qui et omnis vitae temporibus. Sunt amet omnis saepe animi. Quas omnis necessitatibus dolor quisquam impedit molestiae corrupti.\",\"status\":\"A\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":4},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/4\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/64\"}},{\"type\":\"ticket\",\"id\":53,\"attributes\":{\"title\":\"tenetur\",\"description\":\"Sint ducimus ipsa quos incidunt suscipit. Eum consequuntur optio in exercitationem delectus libero. Vero vero dolores veritatis nisi minus ut ut ut.\",\"status\":\"H\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":7},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/7\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/53\"}},{\"type\":\"ticket\",\"id\":55,\"attributes\":{\"title\":\"quis\",\"description\":\"Et ea officiis dicta consequatur qui aut veritatis. Tenetur nemo dolores dolor cupiditate.\",\"status\":\"X\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":10},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/10\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/55\"}},{\"type\":\"ticket\",\"id\":54,\"attributes\":{\"title\":\"est\",\"description\":\"Sunt sunt et provident ipsum cumque est. Quo facilis dolorum ea labore aspernatur possimus facere deserunt. Nobis recusandae quae est. Qui ab maiores aperiam qui.\",\"status\":\"A\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":5},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/5\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/54\"}},{\"type\":\"ticket\",\"id\":56,\"attributes\":{\"title\":\"culpa\",\"description\":\"Vel repudiandae minus nulla dignissimos at voluptas. Aliquid veniam ea distinctio. Ut nobis deserunt quis placeat. Eum et voluptatum voluptas alias incidunt voluptatem.\",\"status\":\"A\",\"createdAt\":\"2024-08-08T07:07:46.000000Z\",\"updatedAt\":\"2024-08-08T07:07:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":1},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/1\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/56\"}}],\"links\":{\"first\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets?page=1\",\"last\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets?page=6\",\"prev\":null,\"next\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets?page=2\"},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":6,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets?page=1\",\"label\":\"1\",\"active\":true},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets?page=2\",\"label\":\"2\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets?page=3\",\"label\":\"3\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets?page=4\",\"label\":\"4\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets?page=5\",\"label\":\"5\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets?page=6\",\"label\":\"6\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets?page=2\",\"label\":\"Next &raquo;\",\"active\":false}],\"path\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\",\"per_page\":15,\"to\":15,\"total\":87}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create a ticket",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/tickets",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/tickets"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"title\":\"et\",\"description\":\"Quisquam perspiciatis ratione assumenda neque nostrum ut.\",\"status\":\"H\"},\"relationships\":{\"author\":{\"data\":{\"id\":\"1\"}}}}}"
+                        },
+                        "description": "Creates a new ticket record. Users can only create tickets for themselves. Managers can create tickets for any user."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"ticket\",\"id\":107,\"attributes\":{\"title\":\"asdfasdfasdfasdfasdfsadf\",\"description\":\"test ticket\",\"status\":\"A\",\"createdAt\":\"2024-03-26T04:40:48.000000Z\",\"updatedAt\":\"2024-03-26T04:40:48.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":1},\"links\":{\"self\":\"http:\\\/\\\/localhost:8000\\\/api\\\/v1\\\/authors\\\/1\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost:8000\\\/api\\\/v1\\\/tickets\\\/107\"}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Show a specific ticket.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/tickets\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/tickets\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the ticket."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display an individual ticket."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"ticket\",\"id\":1,\"attributes\":{\"title\":\"ex\",\"description\":\"Eum qui eos dolores similique iure maiores asperiores nam. Sint beatae laborum molestias iste. Autem qui sunt sunt molestiae sed est id. Nihil harum vero consectetur eligendi id est.\",\"status\":\"X\",\"createdAt\":\"2024-08-08T07:07:45.000000Z\",\"updatedAt\":\"2024-08-08T07:07:45.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":8},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/authors\\\/8\"}}},\"links\":{\"self\":\"http:\\\/\\\/localhost\\\/api\\\/v1\\\/tickets\\\/1\"}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete ticket.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/tickets\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/tickets\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the ticket."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Remove the specified resource from storage."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Replace Ticket",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/tickets\/:ticket_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/tickets\/:ticket_id",
+                            "variable": [
+                                {
+                                    "id": "ticket_id",
+                                    "key": "ticket_id",
+                                    "value": "1",
+                                    "description": "The ID of the ticket."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"title\":\"illo\",\"description\":\"Voluptatibus quae aut quisquam aut natus ad unde distinctio.\",\"status\":\"X\"},\"relationships\":{\"author\":{\"data\":{\"id\":12}}}}}"
+                        },
+                        "description": "Replace the specified ticket in storage."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Ticket",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/tickets\/:ticket_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/tickets\/:ticket_id",
+                            "variable": [
+                                {
+                                    "id": "ticket_id",
+                                    "key": "ticket_id",
+                                    "value": "1",
+                                    "description": "The ID of the ticket."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"title\":\"nostrum\",\"description\":\"Vel tempora aspernatur ut non quas.\",\"status\":\"H\"},\"relationships\":{\"author\":{\"data\":[]}}}}"
+                        },
+                        "description": "Update the specified ticket in storage."
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "Authorization",
+                "type": "string"
+            }
+        ]
+    }
+}
